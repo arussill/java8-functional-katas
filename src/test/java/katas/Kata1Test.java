@@ -1,10 +1,12 @@
 package katas;
 
-import org.hamcrest.CoreMatchers;
+import com.google.common.collect.ImmutableMap;
 import static org.hamcrest.CoreMatchers.*;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.List;
 
 
 public class Kata1Test {
