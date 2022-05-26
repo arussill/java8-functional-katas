@@ -1,6 +1,5 @@
 package katas;
 
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import util.DataUtil;
 
@@ -64,7 +63,7 @@ public class Kata11 {
         List<Map> boxArts = DataUtil.getBoxArts();
         List<Map> bookmarkList = DataUtil.getBookmarkList();
 
-        List<Map> array =  lists.stream()
+        List<Map> array = lists.stream()
                 .map(elemento -> ImmutableMap.of(
                         "nombre", elemento.get("name"),
                         "videos", videos.stream().filter(video -> video.get("listId").equals(video.get("id")))
@@ -73,7 +72,7 @@ public class Kata11 {
                                         "peliTitulo", element.get("title"),
                                         "peliTime", bookmarkList.stream().filter(caja -> caja.get("videoId").equals(element.get("id")))
                                                 .map(tiempo -> tiempo.get("time")).collect(Collectors.toList()),
-                                        "box", boxArts.stream().filter(box-> box.get("videoId").equals(element.get("id")))
+                                        "box", boxArts.stream().filter(box -> box.get("videoId").equals(element.get("id")))
                                                 .map(url -> url.get("url")).findFirst())).collect(Collectors.toList()))).collect(Collectors.toList());
 
         return array;

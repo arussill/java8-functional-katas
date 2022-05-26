@@ -1,14 +1,9 @@
 package katas;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import model.Bookmark;
 import model.InterestingMoment;
-import model.Movie;
 import model.MovieList;
 import util.DataUtil;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -21,8 +16,6 @@ import java.util.stream.Collectors;
 public class Kata9 {
     public static List<Map> execute() {
         List<MovieList> movieLists = DataUtil.getMovieLists();
-
-//        ImmutableList.of(ImmutableMap.of("id", 5, "title", "some title", "time", new Date(), "url", "someUrl"))
 
         return movieLists.stream()
                 .flatMap(peliculas -> peliculas.getVideos().stream()
@@ -37,13 +30,3 @@ public class Kata9 {
                 .collect(Collectors.toList());
     }
 }
-//"time: ", movie.getInterestingMoments().stream()
-//        .map(InterestingMoment::getTime),
-//        "url: ", movie.getBoxarts().stream()
-//        .reduce((boxArt, boxArt2) ->{
-//        if(boxArt.getWidth() * boxArt.getHeight() < boxArt2.getWidth() * boxArt2.getHeight()){
-//        return boxArt;
-//        }
-//        return boxArt2;
-//        })))).collect(Collectors.toList());
-//        return lista1;

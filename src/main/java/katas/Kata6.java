@@ -19,8 +19,8 @@ public class Kata6 {
 
         return movies.stream()
                 .map(Movie::getBoxarts)
-                        .flatMap(Collection::stream)
-                        .reduce((mayor, menor) -> mayor.getWidth() > menor.getWidth() ? mayor : menor)
+                .flatMap(Collection::stream)
+                .reduce((mayor, menor) -> mayor.getWidth() > menor.getWidth() ? mayor : menor)
                 .map(BoxArt::getUrl).orElse("");
     }
 }

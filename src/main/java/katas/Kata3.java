@@ -1,7 +1,5 @@
 package katas;
 
-import com.google.common.collect.ImmutableList;
-import model.Movie;
 import model.MovieList;
 import util.DataUtil;
 
@@ -17,7 +15,6 @@ public class Kata3 {
     public static List<Integer> execute() {
         List<MovieList> movieLists = DataUtil.getMovieLists();
         return movieLists.stream().map(movieList -> movieList.getVideos()).flatMap(video -> video.stream().map(id -> id.getId())).collect(Collectors.toList());
-        //        ImmutableList.of(1, 2, 3);
     }
 }
 

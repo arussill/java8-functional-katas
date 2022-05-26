@@ -1,6 +1,5 @@
 package katas;
 
-import com.google.common.collect.ImmutableList;
 import model.Movie;
 import util.DataUtil;
 
@@ -16,10 +15,9 @@ public class Kata2 {
     public static List<Integer> execute() {
         List<Movie> movies = DataUtil.getMovies();
         List<Integer> peliculas = movies.stream().map(
-                pelis -> pelis.getRating())
-        .filter(raiting -> raiting == 5.0).map(valor -> valor.intValue()).collect(Collectors.toList());
+                        pelis -> pelis.getRating())
+                .filter(raiting -> raiting == 5.0).map(valor -> valor.intValue()).collect(Collectors.toList());
 
-//        ImmutableList.of(1, 2, 3)
         return peliculas;
     }
 }

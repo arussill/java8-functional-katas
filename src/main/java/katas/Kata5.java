@@ -15,6 +15,6 @@ public class Kata5 {
         List<Movie> movies = DataUtil.getMovies();
         return movies.stream()
                 .reduce((mayor, menor) -> mayor.getRating() > menor.getRating() ? mayor : menor).get().getRating()
-        ;
+                ;
     }
 }

@@ -1,11 +1,10 @@
 package katas;
 
 
-import static org.hamcrest.CoreMatchers.*;
-
 import org.junit.Assert;
 import org.junit.Test;
 
+import static org.hamcrest.CoreMatchers.equalTo;
 
 
 public class Kata1Test {

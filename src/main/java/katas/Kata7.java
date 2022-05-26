@@ -22,7 +22,7 @@ public class Kata7 {
                                 "title", peli.getTitle(),
                                 "box", peli.getBoxarts().stream()
                                         .reduce((mayor, menor) -> mayor.getWidth() * mayor.getHeight() > menor.getWidth() * menor.getHeight() ? mayor : menor)
-                                        )))
+                        )))
                 .collect(Collectors.toList());
 
     }
