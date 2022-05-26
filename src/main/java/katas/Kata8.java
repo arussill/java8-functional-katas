@@ -1,6 +1,7 @@
 package katas;
 
 import com.codepoetics.protonpack.StreamUtils;
+import com.google.common.collect.ImmutableMap;
 import model.Bookmark;
 import model.Movie;
 import util.DataUtil;
@@ -20,9 +21,10 @@ public class Kata8 {
         List<Bookmark> bookMarks = DataUtil.getBookMarks();
 
         // StreamUtils.zip()
-
-        return StreamUtils.zip(movies,
-                bookMarks,
-                (a, b) -> a + " is for " + b).collect(Collectors.toList());
+        var pelis = movies.stream().map(peliculas -> peliculas.getId());
+        var libros = bookMarks.stream().map(book -> book.getId());
+        return StreamUtils.zip(pelis,
+                        libros, (a, b) -> ImmutableMap.of(a, b))
+                .collect(Collectors.toList());
     }
 }
