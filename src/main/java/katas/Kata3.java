@@ -20,3 +20,5 @@ public class Kata3 {
         //        ImmutableList.of(1, 2, 3);
     }
 }
+
+

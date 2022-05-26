@@ -17,7 +17,6 @@ public class Kata1 {
         List<Movie> movies = DataUtil.getMovies();
         List<ImmutableMap<Integer, String>> peliculas = movies.stream().map((pelicula) -> ImmutableMap.of(pelicula.getId(), pelicula.getTitle())).collect(Collectors.toList());
 
-//        ImmutableList.of(ImmutableMap.of("id", 5, "title", "Bad Boys"))
         return peliculas;
     }
 }
