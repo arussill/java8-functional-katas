@@ -3,6 +3,7 @@ package katas;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import model.Bookmark;
+import model.InterestingMoment;
 import model.Movie;
 import model.MovieList;
 import util.DataUtil;
@@ -10,6 +11,7 @@ import util.DataUtil;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /*
     Goal: Retrieve each video's id, title, middle interesting moment time, and smallest box art url
@@ -20,6 +22,28 @@ public class Kata9 {
     public static List<Map> execute() {
         List<MovieList> movieLists = DataUtil.getMovieLists();
 
-        return ImmutableList.of(ImmutableMap.of("id", 5, "title", "some title", "time", new Date(), "url", "someUrl"));
+//        ImmutableList.of(ImmutableMap.of("id", 5, "title", "some title", "time", new Date(), "url", "someUrl"))
+
+        return movieLists.stream()
+                .flatMap(peliculas -> peliculas.getVideos().stream()
+                        .map(peli -> Map.of(
+                                "id", peli.getId(),
+                                "title", peli.getTitle(),
+                                "time: ", peli.getInterestingMoments().stream()
+                                        .map(InterestingMoment::getTime),
+                                "box", peli.getBoxarts().stream()
+                                        .reduce((mayor, menor) -> mayor.getWidth() * mayor.getHeight() > menor.getWidth() * menor.getHeight() ? mayor : menor)
+                        )))
+                .collect(Collectors.toList());
     }
 }
+//"time: ", movie.getInterestingMoments().stream()
+//        .map(InterestingMoment::getTime),
+//        "url: ", movie.getBoxarts().stream()
+//        .reduce((boxArt, boxArt2) ->{
+//        if(boxArt.getWidth() * boxArt.getHeight() < boxArt2.getWidth() * boxArt2.getHeight()){
+//        return boxArt;
+//        }
+//        return boxArt2;
+//        })))).collect(Collectors.toList());
+//        return lista1;
